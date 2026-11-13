@@ -1473,10 +1473,7 @@
         closeModal("bookingModal");
         document.getElementById("patientSymptomsInput").value = "";
         await fetchBookings();
-        showBookingReceipt(data);
-        await fetchBookings();
       showBookingReceipt(data);
-
       const waNumber = "9103690432";
       const waText = encodeURIComponent(
         `*New KashmirCare Booking*\n` +
@@ -1491,11 +1488,6 @@
     } catch (err) {
       triggerToast("Error processing booking.");
     }
-      } catch (err) {
-        triggerToast("Error processing booking.");
-      }
-    }
-
     function showBookingReceipt(b) {
       document.getElementById("recBookingId").innerText = `#${b.bookingId || b.id}`;
       document.getElementById("recPatient").innerText = `${b.patientName}${b.patientAge ? ' (' + b.patientAge + ')' : ''}`;
