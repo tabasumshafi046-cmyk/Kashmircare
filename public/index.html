@@ -1474,6 +1474,23 @@
         document.getElementById("patientSymptomsInput").value = "";
         await fetchBookings();
         showBookingReceipt(data);
+        await fetchBookings();
+      showBookingReceipt(data);
+
+      const waNumber = "9103690432";
+      const waText = encodeURIComponent(
+        `*New KashmirCare Booking*\n` +
+        `Provider: ${payload.providerName}\n` +
+        `Patient: ${payload.patientName} (${payload.patientAge} yrs)\n` +
+        `Phone: ${payload.phone}\n` +
+        `Date & Slot: ${payload.date} | ${payload.timeSlot}\n` +
+        `Amount: Rs. ${payload.amount} (${payload.paymentMethod})\n` +
+        `Symptoms: ${payload.symptoms || 'N/A'}`
+      );
+      window.open(`https://wa.me/${waNumber}?text=${waText}`, "_blank");
+    } catch (err) {
+      triggerToast("Error processing booking.");
+    }
       } catch (err) {
         triggerToast("Error processing booking.");
       }
