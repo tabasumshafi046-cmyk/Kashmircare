@@ -1488,6 +1488,7 @@
     } catch (err) {
       triggerToast("Error processing booking.");
     }
+   }
     function showBookingReceipt(b) {
       document.getElementById("recBookingId").innerText = `#${b.bookingId || b.id}`;
       document.getElementById("recPatient").innerText = `${b.patientName}${b.patientAge ? ' (' + b.patientAge + ')' : ''}`;
